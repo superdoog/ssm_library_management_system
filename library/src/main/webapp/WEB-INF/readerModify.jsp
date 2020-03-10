@@ -7,11 +7,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>新增读者</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <title>修改读者</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../bootstrap/js/jquery.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -35,7 +35,7 @@
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">退出</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/exit">退出</a></li>
                     </ul>
                 </div>
             </nav>
@@ -45,21 +45,24 @@
                     <div class="col-md-4 column">
                     </div>
                     <div class="col-md-4 column">
-                        <form role="form" action="">
-                            <div class="form-group">
-                                <label>读者号</label><input type="text" class="form-control" id="book_id"/>
+                        <form id="bookForm" name="bookForm" method="post" action="${pageContext.request.contextPath }/">
+                            <input type="hidden" name="id" value="${reader.reader_id }"/>
+                            <div>
+                                <label for="username">用户名:</label>
+                                <input type="text" name="username" id="username" value="${reader.username }">
                             </div>
-                            <div class="form-group">
-                                <label>用户名</label><input type="text" class="form-control" id="book_name"/>
+                            <div>
+                                <label for="password">密 码：</label>
+                                <input type="text" name="password" id="password" value="${reader.password }">
                             </div>
-                            <div class="form-group">
-                                <label>密码</label><input type="text" class="form-control" id="author"/>
+                            <div>
+                                <label for="name">姓 名：</label>
+                                <input type="text" name="name" id="name" value="${reader.name }">
                             </div>
-                            <div class="form-group">
-                                <label>姓名</label><input type="text" class="form-control" id="number"/>
-                            </div>
-                            <div class="form-group">
-                                <input class="btn btn-default btn-primary " type="submit" value="增加">
+
+                            <div class="nav navbar-nav navbar-right">
+                                <input class="btn btn-default btn-primary " type="button" name="save" id="save" value="保存" />
+                                <input class="btn btn-default btn-primary " type="button" id="back" name="back" value="返回"/>
                             </div>
                         </form>
                     </div>

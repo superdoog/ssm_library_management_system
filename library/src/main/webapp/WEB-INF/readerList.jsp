@@ -7,11 +7,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>图书管理</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <title>读者管理</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../bootstrap/js/jquery.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -29,13 +29,13 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">图书管理</a></li>
+                        <li><a href="#">图书管理</a></li>
                         <li><a href="#">借还管理</a></li>
-                        <li><a href="#">读者管理</a></li>
+                        <li class="active"><a href="#">读者管理</a></li>
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">退出</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/exit">退出</a></li>
                     </ul>
                 </div>
             </nav>
@@ -47,30 +47,26 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
 
-            <button type="button" class="btn btn-default btn-primary navbar-left" href="#">增加书籍</button>
+            <button type="button" class="btn btn-default btn-primary navbar-left" href="#">增加读者</button>
 
             <table class="table table-striped table-condensed">
                 <thead>
                 <tr>
-                    <th>书号</th>
-                    <th>书名</th>
-                    <th>作者</th>
-                    <th>现存量</th>
-                    <th>总量</th>
-                    <th>详情</th>
+                    <th>读者号</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>姓名</th>
                     <th>编辑</th>
                     <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="book" items="${booklist}" varStatus="status">
+                <c:forEach var="reader" items="${readerlist}" varStatus="status">
                     <tr>
-                        <td><span>${book.book_id}</span></td>
-                        <td><span>${book.book_name}</span></td>
-                        <td><span>${book.author}</span></td>
-                        <td><span>${book.number}</span></td>
-                        <td><span>${book.total}</span></td>
-                        <td><span><a href="#">详情</a></span></td>
+                        <td><span>${reader.reader_id}</span></td>
+                        <td><span>${reader.username}</span></td>
+                        <td><span>${reader.password}</span></td>
+                        <td><span>${reader.name}</span></td>
                         <td><span><a href="#">编辑</a></span></td>
                         <td><span><a href="#">删除</a></span></td>
                     </tr>

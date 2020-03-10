@@ -8,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>新增书籍</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../bootstrap/js/jquery.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -35,7 +35,7 @@
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">退出</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/exit">退出</a></li>
                     </ul>
                 </div>
             </nav>
@@ -44,29 +44,32 @@
                 <div class="row clearfix">
                     <div class="col-md-4 column">
                     </div>
-
                     <div class="col-md-4 column">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="thumbnail">
-                                    <div class="caption">
-                                        <p><strong>书号：</strong><span>${book.book_id}</span></p>
-                                        <p><strong>书名：</strong><span>${book.book_name}</span></p>
-                                        <p><strong>作者：</strong><span>${book.author}</span></p>
-                                        <p><strong>现量：</strong><span>${book.number}</span></p>
-                                        <p><strong>总量：</strong><span>${book.total}</span></p>
-                                    </div>
-                                </div>
-                                <a class="btn btn-primary navbar-right" href="#">返回</a>
+                        <form role="form" action="">
+                            <div class="form-group">
+                                <label>书号</label><input type="text" class="form-control" id="book_id"/>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label>书名</label><input type="text" class="form-control" id="book_name"/>
+                            </div>
+                            <div class="form-group">
+                                <label>作者</label><input type="text" class="form-control" id="author"/>
+                            </div>
+                            <div class="form-group">
+                                <label>现量</label><input type="text" class="form-control" id="number"/>
+                            </div>
+                            <div class="form-group">
+                                <label>总量</label><input type="text" class="form-control" id="total"/>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-default btn-primary " type="submit" value="增加">
+                            </div>
+                        </form>
                     </div>
-
                     <div class="col-md-4 column">
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

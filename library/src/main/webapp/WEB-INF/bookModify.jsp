@@ -7,11 +7,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>新增书籍</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <title>修改书籍</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+    <script src="../bootstrap/js/jquery.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -35,7 +35,7 @@
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">退出</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/exit">退出</a></li>
                     </ul>
                 </div>
             </nav>
@@ -45,24 +45,28 @@
                     <div class="col-md-4 column">
                     </div>
                     <div class="col-md-4 column">
-                        <form role="form" action="">
-                            <div class="form-group">
-                                <label>书号</label><input type="text" class="form-control" id="book_id"/>
+                        <form id="bookForm" name="bookForm" method="post" action="${pageContext.request.contextPath }/">
+                            <input type="hidden" name="id" value="${book.book_id}"/>
+                            <div>
+                                <label for="bookName">书名：</label>
+                                <input type="text" name="bookName" id="bookName" value="${book.book_name}">
                             </div>
-                            <div class="form-group">
-                                <label>书名</label><input type="text" class="form-control" id="book_name"/>
+                            <div>
+                                <label for="author">作者：</label>
+                                <input type="text" name="author" id="author" value="${book.author}">
                             </div>
-                            <div class="form-group">
-                                <label>作者</label><input type="text" class="form-control" id="author"/>
+                            <div>
+                                <label for="number">现量：</label>
+                                <input type="text" name="number" id="number" value="${book.number}">
                             </div>
-                            <div class="form-group">
-                                <label>现量</label><input type="text" class="form-control" id="number"/>
+                            <div>
+                                <label for="total">总量：</label>
+                                <input type="text" name="total" id="total" value="${book.total}">
                             </div>
-                            <div class="form-group">
-                                <label>总量</label><input type="text" class="form-control" id="total"/>
-                            </div>
-                            <div class="form-group">
-                                <input class="btn btn-default btn-primary " type="submit" value="增加">
+
+                            <div class="nav navbar-nav navbar-right">
+                                <input class="btn btn-default btn-primary " type="button" name="save" id="save" value="保存" />
+                                <input class="btn btn-default btn-primary " type="button" id="back" name="back" value="返回"/>
                             </div>
                         </form>
                     </div>

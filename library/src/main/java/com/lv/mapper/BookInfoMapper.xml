@@ -2,6 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lv.mapper.BookInfo">
+<mapper namespace="com.lv.mapper.BookInfoMapper">
 
+    <select id="getBookList" resultType="com.lv.pojo.BookInfo">
+        select *
+        from library_management_system.book_info
+            <if test="bookName != null and bookName != ''">
+             where book_name like concat('%',#{bookName},'%')
+            </if>
+            order by book_id asc limit #{currentPage},#{pageSizeNo}
+
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(1) count
+        from library_management_system.book_info
+    </select>
 </mapper>

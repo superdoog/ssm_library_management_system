@@ -8,10 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>图书管理</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
-    <script src="../bootstrap/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -29,9 +30,9 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">图书管理</a></li>
-                        <li><a href="#">借还管理</a></li>
-                        <li><a href="#">读者管理</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
@@ -42,10 +43,12 @@
 
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" name="bookName" value="${bookName}"/>
                 </div>
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
+
+            <input type="hidden" name="pageIndex" value="1"/>
 
             <button type="button" class="btn btn-default btn-primary navbar-left" href="#">增加书籍</button>
 
@@ -62,7 +65,6 @@
                     <th>删除</th>
                 </tr>
                 </thead>
-                <tbody>
                 <c:forEach var="book" items="${booklist}" varStatus="status">
                     <tr>
                         <td><span>${book.book_id}</span></td>
@@ -75,20 +77,25 @@
                         <td><span><a href="#">删除</a></span></td>
                     </tr>
                 </c:forEach>
-                </tbody>
             </table>
 
+            <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
+            <c:import url="page.jsp">
+                <c:param name="totalCount" value="${totalCount}"/>
+                <c:param name="currentPageNo" value="${currentPageNo}"/>
+                <c:param name="totalPageCount" value="${totalPageCount}"/>
+            </c:import>
 
-            <ul class="pagination">
-                <li><a href="#">上一页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">下一页</a>
-                </li>
-            </ul>
+<%--            <ul class="pagination">--%>
+<%--                <li><a href="#">上一页</a></li>--%>
+<%--                <li><a href="#">1</a></li>--%>
+<%--                <li><a href="#">2</a></li>--%>
+<%--                <li><a href="#">3</a></li>--%>
+<%--                <li><a href="#">4</a></li>--%>
+<%--                <li><a href="#">5</a></li>--%>
+<%--                <li><a href="#">下一页</a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
         </div>
     </div>
 </div>

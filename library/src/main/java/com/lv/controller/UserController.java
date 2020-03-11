@@ -6,9 +6,9 @@ import com.lv.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,34 +23,30 @@ public class UserController {
     @Qualifier("adminServiceImpl")
     private AdminServiceImpl adminService;
 
-    @RequestMapping("/reader")
-    public String toReaderLogin(){
-        return "readerLogin";
-    }
-    @RequestMapping("/admin")
-    public String toAdminLogin(){
-        return "adminLogin";
-    }
-
     @RequestMapping("/adminLogin")
-    public String adminLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession Session, Model model){
+    public ModelAndView adminLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession Session,ModelAndView mv){
         Admin admin = adminService.login(username);
         if (admin!=null){
             if (admin.getPassword().equals(password)){
                 Session.setAttribute(Constants.USER_SESSION, admin);
-                return "bookManagement";
+                mv.setViewName("forward:/bookManager");
+                return mv;
             }else {
-               model.addAttribute("error","密码错误");
+               mv.addObject("error","密码错误");
             }
         }else {
-            model.addAttribute("error","用户不存在");
+            mv.addObject("error","用户不存在");
         }
-        return "adminLogin";
+        mv.setViewName("../adminLogin");
+        return mv;
     }
+
     @RequestMapping("/exit")
-    public String logout(HttpSession session){
+    public ModelAndView logout(HttpSession session){
         session.removeAttribute(Constants.USER_SESSION);
-        return "redirect:/user/reader";
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:/readerLogin.jsp");
+        return mv;
     }
 
 }

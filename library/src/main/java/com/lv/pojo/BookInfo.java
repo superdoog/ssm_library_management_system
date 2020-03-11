@@ -14,12 +14,12 @@ public class BookInfo {
     /**
      * 书号
      */
-    private int bookId;
+    private int book_id;
 
     /**
      * 书名
      */
-    private String bookName;
+    private String book_name;
 
     /**
      * 作者

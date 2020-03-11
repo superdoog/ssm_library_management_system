@@ -27,6 +27,7 @@
     <!-- 4.扫描web相关的bean -->
     <context:component-scan base-package="com.lv.controller" />
 
+    <mvc:default-servlet-handler />
 
 
     <!--解决ResponseBody中文乱码-->

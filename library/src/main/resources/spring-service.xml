@@ -20,6 +20,9 @@
     <bean id="AdminServiceImpl" class="com.lv.service.AdminServiceImpl">
         <property name="AdminMapper" ref="adminMapper"/>
     </bean>
+    <bean id="BookServiceImpl" class="com.lv.service.BookServiceImpl">
+        <property name="BookInfoMapper" ref="bookInfoMapper"/>
+    </bean>
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

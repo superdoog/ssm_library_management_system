@@ -248,7 +248,7 @@
 
         <!-- Remind Password -->
         <div id="formFooter">
-            <a class="underlineHover" href="${pageContext.request.contextPath}/user/admin">管理员登录</a>
+            <a class="underlineHover" href="adminLogin.jsp">管理员登录</a>
         </div>
 
     </div>

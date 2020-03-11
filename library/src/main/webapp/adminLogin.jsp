@@ -250,7 +250,7 @@
 
         <!-- Remind Password -->
         <div id="formFooter">
-            <a class="underlineHover" href="${pageContext.request.contextPath}/user/reader">读者登录</a>
+            <a class="underlineHover" href="readerLogin.jsp">读者登录</a>
         </div>
 
     </div>

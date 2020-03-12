@@ -1,16 +1,21 @@
 package com.lv.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.lv.pojo.BookInfo;
 import com.lv.service.BookServiceImpl;
 import com.lv.utils.PageSupport;
+import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lv
@@ -33,7 +38,7 @@ public class BookController {
         //页面显示用户数量
         int pageSize = 6;
         //获取用户总数
-        int totalCount = bookService.getCount();
+        int totalCount = bookService.getCount(bookName);
         //当前页面
         int currentPageNo = 1;
         //总页数
@@ -71,4 +76,106 @@ public class BookController {
         mv.setViewName("bookManagement");
         return mv;
     }
-}
+
+    @RequestMapping("/bookAddPage")
+    public String toBookAddPage(){
+        return "bookAdd";
+    }
+    @RequestMapping("/addBook")
+    public ModelAndView addBook(ModelAndView mv, @RequestParam("book_id") String book_id,
+                                @RequestParam("book_name") String book_name,
+                                @RequestParam("author") String author,
+                                @RequestParam("total") String total,
+                                @RequestParam("number") String number){
+
+        int flag;
+        BookInfo book = new BookInfo(Integer.parseInt(book_id),
+                book_name,
+                author,
+                Integer.parseInt(total),
+                Integer.parseInt(number));
+
+       flag =  bookService.addBook(book);
+       if (flag == 0){
+           mv.addObject("error", "增加书籍失败");
+           mv.setViewName("../error");
+           return mv;
+       }
+       mv.setViewName("redirect:/bookManager");
+       return mv;
+    }
+
+
+    @RequestMapping("/bookView")
+    public ModelAndView toBookView(ModelAndView mv, @RequestParam("book_id") String book_id){
+        BookInfo book = bookService.getBookById(Integer.parseInt(book_id));
+        mv.addObject("book",book);
+        mv.setViewName("bookView");
+        return mv;
+    }
+
+
+    @RequestMapping("/bookModifyPage")
+    public ModelAndView toBookModifyPage(ModelAndView mv, @RequestParam("book_id") String book_id){
+        BookInfo book = bookService.getBookById(Integer.parseInt(book_id));
+        mv.addObject("book",book);
+        mv.setViewName("bookModify");
+        return mv;
+    }
+    @RequestMapping("/updateBook")
+    public ModelAndView updateBook(ModelAndView mv, @RequestParam("book_id") String book_id,
+                                   @RequestParam("book_name") String book_name,
+                                   @RequestParam("author") String author,
+                                   @RequestParam("total") String total,
+                                   @RequestParam("number") String number){
+        int flag;
+        BookInfo book = new BookInfo(Integer.parseInt(book_id),
+                book_name,
+                author,
+                Integer.parseInt(total),
+                Integer.parseInt(number));
+
+        flag =  bookService.updateBook(book);
+        if (flag == 0){
+            mv.addObject("error", "修改书籍失败");
+            mv.setViewName("../error");
+            return mv;
+        }
+        mv.setViewName("redirect:/bookManager");
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping("/deleteBook")
+    public String deleteBook(ModelAndView mv, @RequestParam("book_id") String book_id){
+       int flag;
+//       flag = bookService.deleteBook(Integer.parseInt(book_id));
+//        if (flag == 0){
+//            mv.addObject("error", "删除书籍失败");
+//            mv.setViewName("../error");
+//            return mv;
+//        }
+//        mv.setViewName("redirect:/bookManager");
+//        return mv;
+
+
+        Map<String, String> resultMap = new HashMap<>();
+        flag = bookService.deleteBook(Integer.parseInt(book_id));
+        if (StringUtils.isNullOrEmpty(book_id)) {
+            //不存在
+            resultMap.put("delResult", "notexist");
+        } else {
+            if (flag == 1) {
+                //删除成功
+                resultMap.put("delResult", "true");
+            } else {
+                //删除失败
+                resultMap.put("delResult", "false");
+            }
+        }
+        return JSONArray.toJSONString(resultMap);
+    }
+    }
+
+
+

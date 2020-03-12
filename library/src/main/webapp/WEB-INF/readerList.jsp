@@ -8,11 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>读者管理</title>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css" />
+    <script src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -28,6 +29,8 @@
                     <labela class="navbar-brand">图书管理系统</labela>
                 </div>
 
+                <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath }"/>
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
@@ -42,6 +45,7 @@
             </nav>
 
             <form class="navbar-form navbar-right" role="search">
+                <input type="hidden" name="pageIndex" value="1"/>
                 <div class="form-group">
                     <input type="text" class="form-control"/>
                 </div>
@@ -76,21 +80,19 @@
             </table>
 
 
-            <ul class="pagination">
-                <li><a href="#">上一页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">下一页</a>
-                </li>
-            </ul>
+            <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
+            <c:import url="page.jsp">
+                <c:param name="totalCount" value="${totalCount}"/>
+                <c:param name="currentPageNo" value="${currentPageNo}"/>
+                <c:param name="totalPageCount" value="${totalPageCount}"/>
+            </c:import>
+
         </div>
     </div>
 </div>
 
 </body>
+<script type="text/javascript" src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
 </html>
 
 

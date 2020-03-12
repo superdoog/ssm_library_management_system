@@ -56,7 +56,6 @@
             margin: 0px 5px;
         }
     </style>
-<%--	<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>--%>
 </head>
 <body>
 <div class="page-bar">
@@ -67,7 +66,8 @@
             <a href="javascript:page_nav(document.forms[0],${param.currentPageNo-1});">上一页</a>
         </c:if>
         <c:if test="${param.currentPageNo < param.totalPageCount }">
-            <a href="javascript:page_nav(document.forms[0],${param.currentPageNo+1 });">下一页</a>
+<%--            <a href="javascript:page_nav(document.forms[0],${param.currentPageNo+1 });">下一页</a>--%>
+            <a href="javascript:page_nav(document.forms[0],2);">下一页</a>
             <a href="javascript:page_nav(document.forms[0],${param.totalPageCount });">最后一页</a>
         </c:if>
     </ul>
@@ -78,27 +78,5 @@
 		</span>
 </div>
 </body>
-<script>
-	function page_nav(frm, num) {
-		frm.pageIndex.value = num;
-		frm.submit();
-	}
-
-	function jump_to(frm, num) {
-		//alert(num);
-		//验证用户的输入
-		var regexp = /^[1-9]\d*$/;
-		var totalPageCount = document.getElementById("totalPageCount").value;
-		//alert(totalPageCount);
-		if (!regexp.test(num)) {
-			alert("请输入大于0的正整数！");
-			return false;
-		} else if ((num - totalPageCount) > 0) {
-			alert("请输入小于总页数的页码");
-			return false;
-		} else {
-			page_nav(frm, num);
-		}
-	}
-</script>
+<script src="${pageContext.request.contextPath}/bootstrap/js/page.js"></script>
 </html>

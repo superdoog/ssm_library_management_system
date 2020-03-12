@@ -7,11 +7,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>新增读者</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
-    <script src="../bootstrap/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.js"></script>
+    <title>添加读者</title>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css" />
+    <script src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 

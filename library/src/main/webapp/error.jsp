@@ -5,5 +5,6 @@
 </head>
 <body>
 error
+<div><font color="red">${error}</font></div>
 </body>
 </html>

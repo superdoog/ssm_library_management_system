@@ -23,6 +23,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public BookInfo getBookById(int book_id) {
+        BookInfo book = null;
+        try {
+            book = bookInfoMapper.getBookById(book_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return book;
+    }
+
+    @Override
     public List<BookInfo> getBookList(String bookName, int currentPage, int pageSize) {
         List<BookInfo> bookInfoList = null;
         //换算索引
@@ -36,10 +47,47 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int getCount() {
+    public int getCount(String bookName) {
         int count = 0;
-        count = bookInfoMapper.getCount();
+        try {
+            count = bookInfoMapper.getCount(bookName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return count;
+    }
+
+    @Override
+    public int addBook(BookInfo book) {
+        int flag = 0;
+        try {
+            flag = bookInfoMapper.addBook(book);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    @Override
+    public int updateBook(BookInfo book) {
+        int flag = 0;
+        try {
+            flag = bookInfoMapper.updateBook(book);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    @Override
+    public int deleteBook(int book_id) {
+        int flag = 0;
+        try {
+            flag = bookInfoMapper.deleteBook(book_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 }

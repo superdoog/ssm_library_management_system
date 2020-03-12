@@ -7,11 +7,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>新增书籍</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
-    <script src="../bootstrap/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.js"></script>
+    <title>图书详情</title>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css" />
+    <script src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -29,9 +31,9 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">图书管理</a></li>
-                        <li><a href="#">借还管理</a></li>
-                        <li><a href="#">读者管理</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
@@ -49,6 +51,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="thumbnail">
+
                                     <div class="caption">
                                         <p><strong>书号：</strong><span>${book.book_id}</span></p>
                                         <p><strong>书名：</strong><span>${book.book_name}</span></p>
@@ -57,7 +60,9 @@
                                         <p><strong>总量：</strong><span>${book.total}</span></p>
                                     </div>
                                 </div>
-                                <a class="btn btn-primary navbar-right" href="#">返回</a>
+                                <a href="${pageContext.request.contextPath}/bookManager">
+                                    <input class="btn btn-default btn-primary " type="button" value="返回">
+                                </a>
                             </div>
                         </div>
                     </div>

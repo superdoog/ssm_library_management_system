@@ -7,15 +7,54 @@
     <select id="getBookList" resultType="com.lv.pojo.BookInfo">
         select *
         from library_management_system.book_info
-            <if test="bookName != null and bookName != ''">
-             where book_name like concat('%',#{bookName},'%')
-            </if>
-            order by book_id asc limit #{currentPage},#{pageSizeNo}
+        <if test="bookName != null and bookName != ''">
+            where book_name like concat('%',#{bookName},'%')
+        </if>
+        order by book_id asc limit #{currentPage},#{pageSizeNo}
 
     </select>
 
     <select id="getCount" resultType="int">
         select count(1) count
         from library_management_system.book_info
+        <if test="bookName != null and bookName != ''">
+            where book_name like concat('%',#{bookName},'%')
+        </if>
     </select>
+
+
+    <insert id="addBook" parameterType="BookInfo">
+        insert into library_management_system.book_info(book_id, book_name, author, total, number)
+        VALUES (#{book_id}, #{book_name}, #{author}, #{total}, #{number})
+    </insert>
+    <select id="getBookById" resultType="com.lv.pojo.BookInfo">
+        select *
+        from library_management_system.book_info
+        where book_id = #{book_id}
+    </select>
+
+    <update id="updateBook" parameterType="BookInfo">
+        update library_management_system.book_info
+        <set>
+            <if test="book_name != null and book_name != ''">
+                book_name = #{book_name},
+            </if>
+            <if test="author != null and author != ''">
+                author = #{author},
+            </if>
+            <if test="total != null">
+                total = #{total},
+            </if>
+            <if test="number != null">
+                number = #{number}
+            </if>
+        </set>
+        where book_id = #{book_id}
+    </update>
+
+    <delete id="deleteBook">
+        delete
+        from library_management_system.book_info
+        where book_id = #{book_id}
+    </delete>
 </mapper>

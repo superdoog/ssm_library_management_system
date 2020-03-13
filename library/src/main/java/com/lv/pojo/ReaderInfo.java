@@ -14,7 +14,7 @@ public class ReaderInfo {
     /**
      * 读者号
      */
-    private int readerId;
+    private int reader_id;
 
     /**
      * 用户名

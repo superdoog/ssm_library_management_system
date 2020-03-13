@@ -4,4 +4,53 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lv.mapper.ReaderInfoMapper">
 
+    <select id="getReaderList" resultType="com.lv.pojo.ReaderInfo">
+        select *
+        from library_management_system.reader_info
+        <if test="username != null and username != ''">
+            where username like concat('%',#{username},'%')
+        </if>
+        order by reader_id asc limit #{currentPage},#{pageSizeNo}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(1) count
+        from library_management_system.reader_info
+        <if test="username != null and username != ''">
+            where username like concat('%',#{username},'%')
+        </if>
+    </select>
+
+    <insert id="addReader" parameterType="ReaderInfo">
+        insert into library_management_system.reader_info(reader_id, username, password, name)
+        VALUES (#{reader_id}, #{username}, #{password}, #{name})
+    </insert>
+
+    <select id="getReaderById" resultType="com.lv.pojo.ReaderInfo">
+        select *
+        from library_management_system.reader_info
+        where reader_id = #{reader_id}
+    </select>
+
+    <update id="updateReader" parameterType="ReaderInfo">
+        update library_management_system.reader_info
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+        </set>
+        where reader_id = #{reader_id}
+    </update>
+
+    <delete id="deleteReader">
+        delete
+        from library_management_system.reader_info
+        where reader_id = #{reader_id}
+    </delete>
 </mapper>

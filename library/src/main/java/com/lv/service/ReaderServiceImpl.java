@@ -1,7 +1,7 @@
 package com.lv.service;
 
-import com.lv.mapper.BookInfoMapper;
-import com.lv.pojo.BookInfo;
+import com.lv.mapper.ReaderInfoMapper;
+import com.lv.pojo.ReaderInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -12,45 +12,45 @@ import java.util.List;
  * @author lv
  */
 @Service
-public class BookServiceImpl implements BookService {
+public class ReaderServiceImpl implements ReaderService {
 
     @Autowired
-    @Qualifier("bookInfoMapper")
-    private BookInfoMapper bookInfoMapper;
+    @Qualifier("readerInfoMapper")
+    private ReaderInfoMapper readerInfoMapper;
 
-    public void setBookInfoMapper(BookInfoMapper bookInfoMapper) {
-        this.bookInfoMapper = bookInfoMapper;
+    public void setReaderInfoMapper(ReaderInfoMapper readerInfoMapper) {
+        this.readerInfoMapper = readerInfoMapper;
     }
 
     @Override
-    public BookInfo getBookById(int book_id) {
-        BookInfo book = null;
+    public ReaderInfo getReaderById(int reader_id) {
+        ReaderInfo reader = null;
         try {
-            book = bookInfoMapper.getBookById(book_id);
+            reader = readerInfoMapper.getReaderById(reader_id);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return book;
+        return reader;
     }
 
     @Override
-    public List<BookInfo> getBookList(String bookName, int currentPage, int pageSize) {
-        List<BookInfo> bookInfoList = null;
+    public List<ReaderInfo> getReaderList(String username, int currentPage, int pageSize) {
+        List<ReaderInfo> readerInfoList = null;
         //换算索引
         int currentPageNo = (currentPage - 1) * pageSize;
         try {
-            bookInfoList = bookInfoMapper.getBookList(bookName, currentPageNo, pageSize);
+            readerInfoList = readerInfoMapper.getReaderList(username, currentPageNo, pageSize);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return bookInfoList;
+        return readerInfoList;
     }
 
     @Override
-    public int getCount(String bookName) {
+    public int getCount(String username) {
         int count = 0;
         try {
-            count = bookInfoMapper.getCount(bookName);
+            count = readerInfoMapper.getCount(username);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,10 +58,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int addBook(BookInfo book) {
+    public int addReader(ReaderInfo reader) {
         int flag = 0;
         try {
-            flag = bookInfoMapper.addBook(book);
+            flag = readerInfoMapper.addReader(reader);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,10 +69,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int updateBook(BookInfo book) {
+    public int updateReader(ReaderInfo reader) {
         int flag = 0;
         try {
-            flag = bookInfoMapper.updateBook(book);
+            flag = readerInfoMapper.updateReader(reader);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,10 +80,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int deleteBook(int book_id) {
+    public int deleteReader(int reader_id) {
         int flag = 0;
         try {
-            flag = bookInfoMapper.deleteBook(book_id);
+            flag = readerInfoMapper.deleteReader(reader_id);
         } catch (Exception e) {
             e.printStackTrace();
         }

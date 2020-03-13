@@ -8,73 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>图书管理</title>
-
-    <style>
-        /*点击删除按钮后弹出的层*/
-        .zhezhao {
-            display: none;          /* 修改这里可以让遮罩层消失*/
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            opacity: 0.7;
-            filter: alpha(opacity=70);
-            overflow: hidden;
-        }
-        .remove{
-            display: none;       /* 修改这里可以让删除框消失*/
-            width: 400px;
-            height: 190px;
-            position: absolute;
-            top: 200px;
-            left:500px;
-            background: #fff;
-            border-radius: 4px;
-        }
-        .removerChid{
-            margin: 4px;
-            border: 1px solid #ccc;
-        }
-        .removerChid h2{
-            padding-left: 8px;
-            font-size: 14px;
-            line-height: 30px;
-            margin: 4px 8px;
-            border-bottom: 1px solid #39ace7;
-        }
-        .removeMain{
-            margin-top: 38px;
-            text-align: center;
-            margin-bottom: 30px;
-            border-radius: 4px;
-        }
-        .removeMain a{
-            padding: 0 20px;
-            display: inline-block;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 4px;
-            border: 1px solid #39ace7;
-            margin-top: 30px;
-            background: #39ace7;
-            color: #fff;
-        }
-        .removeMain a:hover,.removeMain a:active{
-            background: #39ace7;
-
-        }
-
-    </style>
-
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.css" />
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css" />
-    <script src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
-
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/delete.css" />
+    <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -91,7 +31,7 @@
                     <labela class="navbar-brand">图书管理系统</labela>
                 </div>
 
-                <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath }"/>
+                <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath}"/>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -140,9 +80,7 @@
                         <td><span>${book.total}</span></td>
                         <td><span><a href="${pageContext.request.contextPath}/bookView?book_id=${book.book_id}">详情</a></span></td>
                         <td><span><a href="${pageContext.request.contextPath}/bookModifyPage?book_id=${book.book_id}">编辑</a></span></td>
-<%--                        <td><span><a class="deleteBook" href="${pageContext.request.contextPath}/deleteBook?book_id=${book.book_id}">删除</a></span></td>--%>
-                        <td><span><a class="deleteUser" href="javascript:;" book_id=${book.book_id } book_name=${book.book_name}>删除</a></span></td>
-
+                        <td><span><a class="deleteBook" href="javascript:;" book_id=${book.book_id} book_name=${book.book_name}>删除</a></span></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -167,12 +105,12 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath }/bootstrap/js/bookManagement.js"></script>
+<script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bookManagement.js"></script>
 </body>
-<script type="text/javascript" src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
-
 </html>
 
 

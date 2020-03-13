@@ -31,9 +31,9 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">图书管理</a></li>
-                        <li><a href="#">借还管理</a></li>
-                        <li class="active"><a href="#">读者管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
@@ -47,21 +47,24 @@
                     <div class="col-md-4 column">
                     </div>
                     <div class="col-md-4 column">
-                        <form role="form" action="">
+                        <form role="form" method="post" action="${pageContext.request.contextPath}/addReader">
                             <div class="form-group">
-                                <label>读者号</label><input type="text" class="form-control" id="book_id"/>
+                                <label>读者号</label><input type="text" class="form-control" name="reader_id" id="reader_id" required/>
                             </div>
                             <div class="form-group">
-                                <label>用户名</label><input type="text" class="form-control" id="book_name"/>
+                                <label>用户名</label><input type="text" class="form-control" name="username" id="username" required/>
                             </div>
                             <div class="form-group">
-                                <label>密码</label><input type="text" class="form-control" id="author"/>
+                                <label>密码</label><input type="text" class="form-control" name="password" id="password" required/>
                             </div>
                             <div class="form-group">
-                                <label>姓名</label><input type="text" class="form-control" id="number"/>
+                                <label>姓名</label><input type="text" class="form-control" name="name" id="name" required/>
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-default btn-primary " type="submit" value="增加">
+                                <a href="${pageContext.request.contextPath}/readerList">
+                                    <input class="btn btn-default btn-primary " type="button" value="返回">
+                                </a>
                             </div>
                         </form>
                     </div>

@@ -23,6 +23,9 @@
     <bean id="BookServiceImpl" class="com.lv.service.BookServiceImpl">
         <property name="BookInfoMapper" ref="bookInfoMapper"/>
     </bean>
+    <bean id="ReaderServiceImpl" class="com.lv.service.ReaderServiceImpl">
+        <property name="ReaderInfoMapper" ref="readerInfoMapper"/>
+    </bean>
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

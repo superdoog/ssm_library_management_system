@@ -1,11 +1,11 @@
-var bookObj;
+var readerObj;
 var path = $("#path").val();
 
-function deleteBook(obj){
+function deleteReader(obj){
 	$.ajax({
 		type:"GET",
-		url:path+"/deleteBook",
-		data:{book_id:obj.attr("book_id")},
+		url:path+"/deleteReader",
+		data:{reader_id:obj.attr("reader_id")},
 		dataType:"json",
 		success:function(data){
 			if(data.delResult == "true"){//删除成功：移除删除行
@@ -13,10 +13,10 @@ function deleteBook(obj){
 				obj.parents("tr").remove();
 			}else if(data.delResult == "false"){//删除失败
 				//alert("对不起，删除用户【"+obj.attr("username")+"】失败");
-				changeDLGContent("对不起，删除图书【"+obj.attr("book_name")+"】失败");
+				changeDLGContent("对不起，删除读者【"+obj.attr("username")+"】失败");
 			}else if(data.delResult == "notexist"){
 				//alert("对不起，用户【"+obj.attr("username")+"】不存在");
-				changeDLGContent("对不起，图书【"+obj.attr("book_name")+"】不存在");
+				changeDLGContent("对不起，读者【"+obj.attr("username")+"】不存在");
 			}
 		},
 		error:function(data){
@@ -53,12 +53,12 @@ $(function(){
 	});
 	
 	$('#yes').click(function () {
-		deleteBook(bookObj);
+		deleteReader(readerObj);
 	});
 
-	$(".deleteBook").on("click",function(){
-		bookObj = $(this);
-		changeDLGContent("你确定要删除【"+bookObj.attr("book_name")+"】吗？");
+	$(".deleteReader").on("click",function(){
+		readerObj = $(this);
+		changeDLGContent("你确定要删除【"+readerObj.attr("username")+"】吗？");
 		openYesOrNoDLG();
 	});
 

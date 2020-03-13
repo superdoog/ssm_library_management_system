@@ -30,12 +30,12 @@ public class BookController {
 
 
     @RequestMapping("/bookManager")
-    public ModelAndView BooManagement(
+    public ModelAndView BookManagement(
             ModelAndView mv,
             @RequestParam(value = "bookName", required = false) String bookName,
             @RequestParam(value = "pageIndex", required = false) String pageIndex){
 
-        //页面显示用户数量
+        //页面显示书籍数量
         int pageSize = 6;
         //获取用户总数
         int totalCount = bookService.getCount(bookName);
@@ -147,18 +147,8 @@ public class BookController {
 
     @ResponseBody
     @RequestMapping("/deleteBook")
-    public String deleteBook(ModelAndView mv, @RequestParam("book_id") String book_id){
+    public String deleteBook(@RequestParam("book_id") String book_id){
        int flag;
-//       flag = bookService.deleteBook(Integer.parseInt(book_id));
-//        if (flag == 0){
-//            mv.addObject("error", "删除书籍失败");
-//            mv.setViewName("../error");
-//            return mv;
-//        }
-//        mv.setViewName("redirect:/bookManager");
-//        return mv;
-
-
         Map<String, String> resultMap = new HashMap<>();
         flag = bookService.deleteBook(Integer.parseInt(book_id));
         if (StringUtils.isNullOrEmpty(book_id)) {

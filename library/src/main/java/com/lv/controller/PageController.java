@@ -19,10 +19,10 @@ public class PageController {
         return "lendList";
     }
 
-    @RequestMapping("/readerList")
-    public String toReaderList(){
-        return "readerList";
-    }
+//    @RequestMapping("/readerList")
+//    public String toReaderList(){
+//        return "readerList";
+//    }
 
 
 

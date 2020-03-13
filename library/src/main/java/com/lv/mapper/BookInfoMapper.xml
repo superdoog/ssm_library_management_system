@@ -11,7 +11,6 @@
             where book_name like concat('%',#{bookName},'%')
         </if>
         order by book_id asc limit #{currentPage},#{pageSizeNo}
-
     </select>
 
     <select id="getCount" resultType="int">

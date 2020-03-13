@@ -29,11 +29,12 @@
                     <labela class="navbar-brand">图书管理系统</labela>
                 </div>
 
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">图书管理</a></li>
-                        <li><a href="#">借还管理</a></li>
-                        <li class="active"><a href="#">读者管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
@@ -47,24 +48,26 @@
                     <div class="col-md-4 column">
                     </div>
                     <div class="col-md-4 column">
-                        <form id="bookForm" name="bookForm" method="post" action="${pageContext.request.contextPath }/">
-                            <input type="hidden" name="id" value="${reader.reader_id }"/>
+                        <form id="bookForm" name="bookForm" method="post" action="${pageContext.request.contextPath}/updateReader">
+                            <input type="hidden" name="reader_id" value="${reader.reader_id}"/>
                             <div>
                                 <label for="username">用户名:</label>
-                                <input type="text" name="username" id="username" value="${reader.username }">
+                                <input type="text" name="username" id="username" required value="${reader.username}">
                             </div>
                             <div>
                                 <label for="password">密 码：</label>
-                                <input type="text" name="password" id="password" value="${reader.password }">
+                                <input type="text" name="password" id="password" required value="${reader.password}">
                             </div>
                             <div>
                                 <label for="name">姓 名：</label>
-                                <input type="text" name="name" id="name" value="${reader.name }">
+                                <input type="text" name="name" id="name" required value="${reader.name}">
                             </div>
 
                             <div class="nav navbar-nav navbar-right">
-                                <input class="btn btn-default btn-primary " type="button" name="save" id="save" value="保存" />
-                                <input class="btn btn-default btn-primary " type="button" id="back" name="back" value="返回"/>
+                                <input class="btn btn-default btn-primary " type="submit" name="save" id="save" value="保存" />
+                                <a href="${pageContext.request.contextPath}/readerList">
+                                    <input class="btn btn-default btn-primary " type="button" value="返回">
+                                </a>
                             </div>
                         </form>
                     </div>

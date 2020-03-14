@@ -53,4 +53,10 @@
         from library_management_system.reader_info
         where reader_id = #{reader_id}
     </delete>
+
+    <select id="login" resultType="ReaderInfo">
+        select *
+        from library_management_system.reader_info
+        where username = #{username}
+    </select>
 </mapper>

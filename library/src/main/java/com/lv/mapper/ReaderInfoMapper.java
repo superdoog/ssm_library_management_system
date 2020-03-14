@@ -61,4 +61,11 @@ public interface ReaderInfoMapper {
      * @throws Exception
      */
     public int deleteReader(@Param("reader_id") int reader_id) throws Exception;
+
+    /**
+     * 登录
+     * @return
+     * @throws Exception
+     */
+    public ReaderInfo login(@Param("username") String username) throws Exception;
 }

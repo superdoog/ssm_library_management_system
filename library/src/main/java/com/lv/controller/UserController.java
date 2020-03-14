@@ -1,7 +1,9 @@
 package com.lv.controller;
 
 import com.lv.pojo.Admin;
-import com.lv.service.AdminServiceImpl;
+import com.lv.pojo.ReaderInfo;
+import com.lv.service.AdminService;
+import com.lv.service.ReaderService;
 import com.lv.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,7 +23,10 @@ public class UserController {
 
     @Autowired
     @Qualifier("adminServiceImpl")
-    private AdminServiceImpl adminService;
+    private AdminService adminService;
+    @Autowired
+    @Qualifier("ReaderServiceImpl")
+    private ReaderService readerService;
 
     @RequestMapping("/adminLogin")
     public ModelAndView adminLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession Session,ModelAndView mv){
@@ -40,6 +45,24 @@ public class UserController {
         mv.setViewName("../adminLogin");
         return mv;
     }
+    @RequestMapping("/readerLogin")
+    public ModelAndView readerLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession Session,ModelAndView mv){
+        ReaderInfo reader = readerService.login(username);
+        if (reader!=null){
+            if (reader.getPassword().equals(password)){
+                Session.setAttribute(Constants.USER_SESSION, reader);
+                mv.setViewName("forward:/bookSelector");
+                return mv;
+            }else {
+               mv.addObject("error","密码错误");
+            }
+        }else {
+            mv.addObject("error","用户不存在");
+        }
+        mv.setViewName("../readerLogin");
+        return mv;
+    }
+
 
     @RequestMapping("/exit")
     public ModelAndView logout(HttpSession session){

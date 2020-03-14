@@ -30,7 +30,7 @@ public class BookController {
 
 
     @RequestMapping("/bookManager")
-    public ModelAndView BookManagement(
+    public ModelAndView bookManagement(
             ModelAndView mv,
             @RequestParam(value = "bookName", required = false) String bookName,
             @RequestParam(value = "pageIndex", required = false) String pageIndex){
@@ -77,6 +77,54 @@ public class BookController {
         return mv;
     }
 
+    @RequestMapping("/bookSelector")
+    public ModelAndView bookSelect(
+            ModelAndView mv,
+            @RequestParam(value = "bookName", required = false) String bookName,
+            @RequestParam(value = "pageIndex", required = false) String pageIndex){
+
+        //页面显示书籍数量
+        int pageSize = 6;
+        //获取用户总数
+        int totalCount = bookService.getCount(bookName);
+        //当前页面
+        int currentPageNo = 1;
+        //总页数
+        PageSupport pageSupport = new PageSupport();
+        pageSupport.setCurrentPageNo(currentPageNo);
+        pageSupport.setPageSize(pageSize);
+        pageSupport.setTotalCount(totalCount);
+        int totalPageCount = pageSupport.getTotalPageCount();
+
+        if (bookName == null) {
+            bookName = "";
+        }
+        if (pageIndex != null) {
+            try {
+                currentPageNo = Integer.valueOf(pageIndex);
+            } catch (NumberFormatException e) {
+                mv.setViewName("redirect:/error.jsp");
+                return mv;
+            }
+        }
+        // 控制首页和尾页在范围内
+        if (currentPageNo < 1) {
+            currentPageNo = 1;
+        } else if (currentPageNo > totalPageCount) {
+            currentPageNo = totalPageCount;
+        }
+
+        List<BookInfo> bookList = bookService.getBookList(bookName, currentPageNo, pageSize);
+        mv.addObject("booklist", bookList);
+        mv.addObject("bookName", bookName);
+        mv.addObject("totalPageCount", totalPageCount);
+        mv.addObject("totalCount", totalCount);
+        mv.addObject("currentPageNo", currentPageNo);
+
+        mv.setViewName("bookSelect");
+        return mv;
+    }
+
     @RequestMapping("/bookAddPage")
     public String toBookAddPage(){
         return "bookAdd";
@@ -111,6 +159,14 @@ public class BookController {
         BookInfo book = bookService.getBookById(Integer.parseInt(book_id));
         mv.addObject("book",book);
         mv.setViewName("bookView");
+        return mv;
+    }
+
+    @RequestMapping("/rBookView")
+    public ModelAndView toReaderBookView(ModelAndView mv, @RequestParam("book_id") String book_id){
+        BookInfo book = bookService.getBookById(Integer.parseInt(book_id));
+        mv.addObject("book",book);
+        mv.setViewName("readerBookView");
         return mv;
     }
 

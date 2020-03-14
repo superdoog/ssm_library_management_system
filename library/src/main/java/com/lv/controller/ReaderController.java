@@ -3,6 +3,7 @@ package com.lv.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.lv.pojo.ReaderInfo;
 import com.lv.service.ReaderServiceImpl;
+import com.lv.utils.Constants;
 import com.lv.utils.PageSupport;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,20 +108,34 @@ public class ReaderController {
         return mv;
     }
 
+    @RequestMapping("/rReaderModifyPage")
+    public ModelAndView torReaderModifyPage(ModelAndView mv, HttpSession session) {
+        ReaderInfo reader = (ReaderInfo) session.getAttribute(Constants.USER_SESSION);
+        mv.addObject("reader", reader);
+        mv.setViewName("rReaderModify");
+        return mv;
+    }
+
     @RequestMapping("/updateReader")
-    public ModelAndView updateReader(ModelAndView mv, @RequestParam("reader_id") String reader_id,
+    public ModelAndView updateReader(ModelAndView mv, HttpSession session, @RequestParam("reader_id") String reader_id,
                                      @RequestParam("username") String username,
                                      @RequestParam("password") String password,
                                      @RequestParam("name") String name) {
         int flag;
         ReaderInfo reader = new ReaderInfo(Integer.parseInt(reader_id), username, password, name);
         flag = readerService.updateReader(reader);
+        Object obj = session.getAttribute(Constants.USER_SESSION);
+
         if (flag == 0) {
             mv.addObject("error", "修改读者失败");
             mv.setViewName("../error");
             return mv;
         }
-        mv.setViewName("redirect:/readerList");
+        if (obj instanceof ReaderInfo) {
+            mv.setViewName("../readerLogin");
+        }else {
+            mv.setViewName("redirect:/readerList");
+        }
         return mv;
     }
 
@@ -143,6 +159,16 @@ public class ReaderController {
         }
         return JSONArray.toJSONString(resultMap);
     }
+
+    @RequestMapping("/readerInfo")
+    public ModelAndView toBookView(ModelAndView mv, HttpSession session) {
+        ReaderInfo reader = (ReaderInfo) session.getAttribute(Constants.USER_SESSION);
+        mv.addObject("reader", reader);
+        mv.setViewName("readerInfoView");
+        return mv;
+    }
+
+
 }
 
 

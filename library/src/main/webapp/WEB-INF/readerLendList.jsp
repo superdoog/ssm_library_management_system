@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>借还管理</title>
+    <title>我的借还</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css"/>
     <link type="text/css" rel="stylesheet"
           href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css"/>
@@ -25,16 +25,16 @@
                             data-target="#bs-example-navbar-collapse-1"><span
                             class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                             class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <labela class="navbar-brand">图书管理系统</labela>
+                    <labela class="navbar-brand">我的图书</labela>
                 </div>
 
-                <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath }"/>
+                <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath}"/>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
-                        <li><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/bookSelector">图书查询</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/rlendList">我的借还</a></li>
+                        <li><a href="${pageContext.request.contextPath}/readerInfo">我的信息</a></li>
                     </ul>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
@@ -42,6 +42,7 @@
                     </ul>
                 </div>
             </nav>
+
 
             <form class="navbar-form navbar-right" role="search">
                 <input type="hidden" name="pageIndex" value="1"/>

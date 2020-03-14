@@ -19,6 +19,11 @@ public class PageController {
         return "lendList";
     }
 
+    @RequestMapping("/rlendList")
+    public String torLendList(){
+        return "readerLendList";
+    }
+
 //    @RequestMapping("/readerList")
 //    public String toReaderList(){
 //        return "readerList";

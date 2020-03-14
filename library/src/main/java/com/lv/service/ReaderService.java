@@ -21,4 +21,7 @@ public interface ReaderService {
 
     public int deleteReader(int reader_id);
 
+    public ReaderInfo login(String username);
+
+
 }

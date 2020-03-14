@@ -89,4 +89,15 @@ public class ReaderServiceImpl implements ReaderService {
         }
         return flag;
     }
+
+    @Override
+    public ReaderInfo login(String username) {
+        ReaderInfo reader = null;
+        try {
+            reader = readerInfoMapper.login(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return reader;
+    }
 }

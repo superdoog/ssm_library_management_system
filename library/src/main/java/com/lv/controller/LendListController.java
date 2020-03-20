@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.lv.pojo.LendList;
 import com.lv.service.LendListServiceImpl;
 import com.lv.utils.PageSupport;
+import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

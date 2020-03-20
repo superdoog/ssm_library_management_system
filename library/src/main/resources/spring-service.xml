@@ -26,6 +26,9 @@
     <bean id="ReaderServiceImpl" class="com.lv.service.ReaderServiceImpl">
         <property name="ReaderInfoMapper" ref="readerInfoMapper"/>
     </bean>
+    <bean id="LendListServiceImpl" class="com.lv.service.LendListServiceImpl">
+        <property name="LendListMapper" ref="lendListMapper"/>
+    </bean>
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

@@ -16,26 +16,26 @@ public class LendList {
     /**
      * 流水号
      */
-    private int serNum;
+    private int ser_num;
 
     /**
      * 图书号
      */
-    private int bookId;
+    private int book_id;
 
     /**
      * 读者号
      */
-    private int readerId;
+    private int reader_id;
 
     /**
      * 借出日期
      */
-    private Date lendDate;
+    private Date lend_date;
 
     /**
      * 归还日期
      */
-    private Date backDate;
+    private Date back_date;
 }
 

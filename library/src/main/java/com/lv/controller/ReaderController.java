@@ -30,7 +30,7 @@ public class ReaderController {
     private ReaderServiceImpl readerService;
 
     @RequestMapping("/readerList")
-    public ModelAndView BooManagement(
+    public ModelAndView BookManagement(
             ModelAndView mv,
             @RequestParam(value = "username", required = false) String username,
             @RequestParam(value = "pageIndex", required = false) String pageIndex) {
@@ -53,7 +53,7 @@ public class ReaderController {
         }
         if (pageIndex != null) {
             try {
-                currentPageNo = Integer.valueOf(pageIndex);
+                currentPageNo = Integer.parseInt(pageIndex);
             } catch (NumberFormatException e) {
                 mv.setViewName("redirect:/error.jsp");
                 return mv;

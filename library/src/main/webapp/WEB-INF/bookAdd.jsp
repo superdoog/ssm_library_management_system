@@ -32,7 +32,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
-                        <li><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toLendList">借还管理</a></li>
                         <li><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
                     </ul>
                     </form>

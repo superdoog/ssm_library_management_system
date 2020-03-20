@@ -9,10 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>修改书籍</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.css" />
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css" />
     <script src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -32,7 +30,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
-                        <li><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toLendList">借还管理</a></li>
                         <li><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
                     </ul>
                     </form>

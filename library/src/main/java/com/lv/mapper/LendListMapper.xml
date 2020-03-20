@@ -4,4 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lv.mapper.LendListMapper">
 
+    <select id="getLendList" resultType="com.lv.pojo.LendList">
+        select *
+        from library_management_system.lend_list
+        <if test="reader_id != 0">
+            where reader_id = #{reader_id}
+        </if>
+        order by ser_num asc limit #{currentPage},#{pageSizeNo}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(1) count
+        from library_management_system.lend_list
+        <if test="reader_id != 0">
+            where reader_id = #{reader_id}
+        </if>
+    </select>
+
+    <delete id="deleteBySer_num">
+        delete
+        from library_management_system.lend_list
+        where ser_num = #{ser_num}
+    </delete>
 </mapper>

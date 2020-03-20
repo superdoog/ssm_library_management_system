@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="${pageContext.request.contextPath}/bookManager">图书管理</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/lendList">借还管理</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/toLendList">借还管理</a></li>
                         <li><a href="${pageContext.request.contextPath}/readerList">读者管理</a></li>
                     </ul>
                     </form>
@@ -43,10 +43,10 @@
                 </div>
             </nav>
 
-            <form class="navbar-form navbar-right" role="search">
+            <form class="navbar-form navbar-right" role="search" action="${pageContext.request.contextPath}/toLendList">
                 <input type="hidden" name="pageIndex" value="1"/>
                 <div class="form-group">
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" name="reader_id" value="${reader_id}"/>
                 </div>
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
@@ -69,9 +69,9 @@
                         <td><span>${lend.ser_num}</span></td>
                         <td><span>${lend.book_id}</span></td>
                         <td><span>${lend.reader_id}</span></td>
-                        <td><span>${lend.lend_date}</span></td>
-                        <td><span>${lend.back_date}</span></td>
-                        <td><span><a href="#">删除</a></span></td>
+                        <td><span><fmt:formatDate value="${lend.lend_date}" pattern="yyyy-MM-dd"/></span></td>
+                        <td><span><fmt:formatDate value="${lend.back_date}" pattern="yyyy-MM-dd"/></span></td>
+                        <td><span><a class="deleteLend" href="javascript:;" ser_num=${lend.ser_num}>删除</a></span></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -83,13 +83,25 @@
                 <c:param name="currentPageNo" value="${currentPageNo}"/>
                 <c:param name="totalPageCount" value="${totalPageCount}"/>
             </c:import>
+        </div>
 
+        <!--点击删除按钮后弹出的页面-->
+        <div class="zhezhao"></div>
+        <div class="remove" id="removeUse">
+            <div class="removerChid">
+                <h2>提示</h2>
+                <div class="removeMain">
+                    <p>你确定要删除该记录吗？</p>
+                    <a href="#" id="yes">确定</a>
+                    <a href="#" id="no">取消</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 </body>
-<script type="text/javascript" src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/lendList.js"></script>
 </html>
 
 

@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>我的借还</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.css"/>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap/css/bootstrap-theme.min.css"/>
     <script src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
     <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -57,11 +56,10 @@
                 <thead>
                 <tr>
                     <th>流水号</th>
-                    <th>图书号</th>
-                    <th>读者号</th>
+                    <th>图书</th>
                     <th>借出日期</th>
                     <th>归还日期</th>
-                    <th>删除</th>
+                    <th>还书</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,10 +67,9 @@
                     <tr>
                         <td><span>${lend.ser_num}</span></td>
                         <td><span>${lend.book_id}</span></td>
-                        <td><span>${lend.reader_id}</span></td>
                         <td><span>${lend.lend_date}</span></td>
                         <td><span>${lend.back_date}</span></td>
-                        <td><span><a href="#">删除</a></span></td>
+                        <td><span><a href="#">还书</a></span></td>
                     </tr>
                 </c:forEach>
                 </tbody>

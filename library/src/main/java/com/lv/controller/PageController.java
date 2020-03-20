@@ -14,10 +14,10 @@ public class PageController {
 //        return "forward:/bookManager";
 //    }
 
-    @RequestMapping("/lendList")
-    public String toLendList(){
-        return "lendList";
-    }
+//    @RequestMapping("/lendList")
+//    public String toLendList(){
+//        return "lendList";
+//    }
 
     @RequestMapping("/rlendList")
     public String torLendList(){

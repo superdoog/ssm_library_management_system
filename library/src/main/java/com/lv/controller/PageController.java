@@ -1,7 +1,6 @@
 package com.lv.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author lv
@@ -19,10 +18,10 @@ public class PageController {
 //        return "lendList";
 //    }
 
-    @RequestMapping("/rlendList")
-    public String torLendList(){
-        return "readerLendList";
-    }
+//    @RequestMapping("/rlendList")
+//    public String torLendList(){
+//        return "readerLendList";
+//    }
 
 //    @RequestMapping("/readerList")
 //    public String toReaderList(){

@@ -105,7 +105,6 @@
             </div>
         </div>
     </div>
-<script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bookManagement.js"></script>
 </body>
 </html>

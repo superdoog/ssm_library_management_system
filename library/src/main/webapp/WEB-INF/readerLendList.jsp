@@ -32,7 +32,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="${pageContext.request.contextPath}/bookSelector">图书查询</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/rlendList">我的借还</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/toReaderLendList">我的借还</a></li>
                         <li><a href="${pageContext.request.contextPath}/readerInfo">我的信息</a></li>
                     </ul>
                     </form>
@@ -41,16 +41,6 @@
                     </ul>
                 </div>
             </nav>
-
-
-            <form class="navbar-form navbar-right" role="search">
-                <input type="hidden" name="pageIndex" value="1"/>
-                <div class="form-group">
-                    <input type="text" class="form-control"/>
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
-
 
             <table class="table table-striped table-condensed">
                 <thead>
@@ -66,10 +56,10 @@
                 <c:forEach var="lend" items="${lendlist}" varStatus="status">
                     <tr>
                         <td><span>${lend.ser_num}</span></td>
-                        <td><span>${lend.book_id}</span></td>
-                        <td><span>${lend.lend_date}</span></td>
-                        <td><span>${lend.back_date}</span></td>
-                        <td><span><a href="#">还书</a></span></td>
+                        <td><span>${lend.book_name}</span></td>
+                        <td><span><fmt:formatDate value="${lend.lend_date}" pattern="yyyy-MM-dd"/></span></td>
+                        <td><span><fmt:formatDate value="${lend.back_date}" pattern="yyyy-MM-dd"/></span></td>
+                        <td><span><a class="deleteLend" href="javascript:;" ser_num=${lend.ser_num} book_name=${lend.book_name}>还书</a></span></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -81,13 +71,25 @@
                 <c:param name="currentPageNo" value="${currentPageNo}"/>
                 <c:param name="totalPageCount" value="${totalPageCount}"/>
             </c:import>
+        </div>
 
+        <!--点击还书后弹出的页面-->
+        <div class="zhezhao"></div>
+        <div class="remove" id="removeUse">
+            <div class="removerChid">
+                <h2>提示</h2>
+                <div class="removeMain">
+                    <p>你确定要删除该记录吗？</p>
+                    <a href="#" id="yes">确定</a>
+                    <a href="#" id="no">取消</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 </body>
-<script type="text/javascript" src="${pageContext.request.contextPath }/bootstrap/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/bootstrap/js/readerLendList.js"></script>
 </html>
 
 

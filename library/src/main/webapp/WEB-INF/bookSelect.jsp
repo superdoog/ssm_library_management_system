@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="${pageContext.request.contextPath}/bookSelector">图书查询</a></li>
-                        <li><a href="${pageContext.request.contextPath}/rlendList">我的借还</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toReaderLendList">我的借还</a></li>
                         <li><a href="${pageContext.request.contextPath}/readerInfo">我的信息</a></li>
                     </ul>
                     </form>
@@ -69,7 +69,8 @@
                         <td><span>${book.author}</span></td>
                         <td><span>${book.number}</span></td>
                         <td><span><a href="${pageContext.request.contextPath}/rBookView?book_id=${book.book_id}">详情</a></span></td>
-                        <td><span><a href="${pageContext.request.contextPath}/">借阅</a></span></td>
+                        <td><span><a class="LendBook" href="javascript:;" book_id=${book.book_id} book_name=${book.book_name}>借阅</a></span></td>
+
                     </tr>
                 </c:forEach>
             </table>
@@ -82,10 +83,20 @@
             </c:import>
         </div>
 
+        <div class="zhezhao"></div>
+        <div class="remove" id="removeUse">
+            <div class="removerChid">
+                <h2>提示</h2>
+                <div class="removeMain">
+                    <p>你确定要删除该记录吗？</p>
+                    <a href="#" id="yes">确定</a>
+                    <a href="#" id="no">取消</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bookManagement.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bookSelect.js"></script>
 </body>
 </html>
 

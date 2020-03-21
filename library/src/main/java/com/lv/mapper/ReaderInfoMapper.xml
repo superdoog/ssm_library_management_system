@@ -22,8 +22,8 @@
     </select>
 
     <insert id="addReader" parameterType="ReaderInfo">
-        insert into library_management_system.reader_info(reader_id, username, password, name)
-        VALUES (#{reader_id}, #{username}, #{password}, #{name})
+        insert into library_management_system.reader_info(username, password, name)
+        VALUES (#{username}, #{password}, #{name})
     </insert>
 
     <select id="getReaderById" resultType="com.lv.pojo.ReaderInfo">

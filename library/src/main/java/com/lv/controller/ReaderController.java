@@ -83,12 +83,12 @@ public class ReaderController {
     }
 
     @RequestMapping("/addReader")
-    public ModelAndView addReader(ModelAndView mv, @RequestParam("reader_id") String reader_id,
+    public ModelAndView addReader(ModelAndView mv,
                                   @RequestParam("username") String username,
                                   @RequestParam("password") String password,
                                   @RequestParam("name") String name) {
         int flag;
-        ReaderInfo reader = new ReaderInfo(Integer.parseInt(reader_id), username, password, name);
+        ReaderInfo reader = new ReaderInfo(username, password, name);
 
         flag = readerService.addReader(reader);
         if (flag == 0) {

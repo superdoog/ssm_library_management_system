@@ -30,5 +30,11 @@ public class ReaderInfo {
      * 姓名
      */
     private String name;
+
+    public ReaderInfo(String username, String password, String name) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+    }
 }
 

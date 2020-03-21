@@ -44,6 +44,7 @@
             </nav>
 
             <form class="navbar-form navbar-right" role="search" action="${pageContext.request.contextPath}/toLendList">
+                <span>按读者号搜索:</span>
                 <input type="hidden" name="pageIndex" value="1"/>
                 <div class="form-group">
                     <input type="text" class="form-control" name="reader_id" value="${reader_id}"/>

@@ -4,19 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lv.mapper.LendListMapper">
 
-    <select id="getLendList" resultType="com.lv.pojo.LendList">
-        select *
-        from library_management_system.lend_list
-        <if test="reader_id != 0">
-            where reader_id = #{reader_id}
-        </if>
-        order by ser_num asc limit #{currentPage},#{pageSizeNo}
+    <resultMap id="lendListMap" type="LendList">
+        <id property="ser_num" column="ser_num"/>
+        <id property="book_id" column="book_id"/>
+        <id property="reader_id" column="reader_id"/>
+        <id property="lend_date" column="lend_date"/>
+        <id property="back_date" column="back_date"/>
+        <id property="book_name" column="book_name"/>
+    </resultMap>
+
+    <select id="getLendList" resultMap="lendListMap">
+        select l.*, b.book_name
+        from library_management_system.lend_list l ,library_management_system.book_info b
+        <trim prefix=" where l.book_id = b.book_id">
+            <if test="reader_id > 0">
+                and l.reader_id = #{reader_id}
+            </if>
+            order by ser_num asc limit #{currentPage},#{pageSizeNo}
+        </trim>
     </select>
 
     <select id="getCount" resultType="int">
         select count(1) count
         from library_management_system.lend_list
-        <if test="reader_id != 0">
+        <if test="reader_id > 0">
             where reader_id = #{reader_id}
         </if>
     </select>
@@ -26,4 +37,17 @@
         from library_management_system.lend_list
         where ser_num = #{ser_num}
     </delete>
+
+    <select id="getLendListBySer_num" resultType="com.lv.pojo.LendList">
+        select *
+        from library_management_system.lend_list
+        where ser_num = #{ser_num}
+    </select>
+
+    <insert id="addLendList" parameterType="LendList">
+        insert into library_management_system.lend_list(book_id, reader_id, lend_date, back_date)
+        values (#{lendList.book_id}, #{lendList.reader_id}, #{lendList.lend_date}, #{lendList.back_date})
+    </insert>
+
+
 </mapper>

@@ -47,9 +47,6 @@
                     <div class="col-md-4 column">
                         <form role="form" method="post" action="${pageContext.request.contextPath}/addReader">
                             <div class="form-group">
-                                <label>读者号</label><input type="text" class="form-control" name="reader_id" id="reader_id" required/>
-                            </div>
-                            <div class="form-group">
                                 <label>用户名</label><input type="text" class="form-control" name="username" id="username" required/>
                             </div>
                             <div class="form-group">

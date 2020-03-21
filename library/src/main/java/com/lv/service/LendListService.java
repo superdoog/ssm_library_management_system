@@ -11,9 +11,11 @@ public interface LendListService {
 
     public List<LendList> getLendList(int reader_id, int currentPage, int pageSize);
 
+    public LendList getLendListBySer_num(int ser_num);
+
     public int getCount(int reader_id);
 
     public int deleteBySer_num(int ser_num);
 
-
+    public int addLendList(LendList lendList);
 }

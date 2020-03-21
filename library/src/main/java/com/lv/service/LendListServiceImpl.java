@@ -36,6 +36,17 @@ public class LendListServiceImpl implements LendListService {
     }
 
     @Override
+    public LendList getLendListBySer_num(int ser_num) {
+        LendList lendList = null;
+        try {
+            lendList = lendListMapper.getLendListBySer_num(ser_num);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lendList;
+    }
+
+    @Override
     public int getCount(int reader_id) {
         int count = 0;
         try {
@@ -51,6 +62,17 @@ public class LendListServiceImpl implements LendListService {
         int flag = 0;
         try {
             flag = lendListMapper.deleteBySer_num(ser_num);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    @Override
+    public int addLendList(LendList lendList) {
+        int flag = 0;
+        try {
+            flag = lendListMapper.addLendList(lendList);
         } catch (Exception e) {
             e.printStackTrace();
         }

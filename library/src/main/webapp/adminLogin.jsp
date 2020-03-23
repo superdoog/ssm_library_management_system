@@ -18,7 +18,10 @@
 
         <!-- Login Form -->
         <form method="post" action="${pageContext.request.contextPath}/user/adminLogin">
-            <div class="fadeIn second info">${error}</div>
+            <c:set var="error" value='<%=request.getParameter("error")%>'/>
+            <c:if test="${error != null}">
+                <div class="fadeIn second info">${error}</div>
+            </c:if>
             <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
             <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">

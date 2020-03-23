@@ -42,7 +42,7 @@ public class UserController {
         }else {
             mv.addObject("error","用户不存在");
         }
-        mv.setViewName("../adminLogin");
+        mv.setViewName("redirect:/adminLogin.jsp");
         return mv;
     }
     @RequestMapping("/readerLogin")
@@ -59,7 +59,7 @@ public class UserController {
         }else {
             mv.addObject("error","用户不存在");
         }
-        mv.setViewName("../readerLogin");
+        mv.setViewName("redirect:/readerLogin.jsp");
         return mv;
     }
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,7 +15,10 @@
 
         <!-- Login Form -->
         <form method="post" action="${pageContext.request.contextPath}/user/readerLogin">
-            <div class="fadeIn second info">${error}</div>
+            <c:set var="error" value='<%=request.getParameter("error")%>'/>
+            <c:if test="${error != null}">
+                <div class="fadeIn second info">${error}</div>
+            </c:if>
             <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
             <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
